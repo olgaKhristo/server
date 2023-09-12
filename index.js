@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.use(express.json()); // this is  inbild midleweare
+app.use(express.json())
 
 // this is midleweare
 app.use((req, res, next) => {
