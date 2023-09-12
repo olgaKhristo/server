@@ -11,6 +11,14 @@ app.get('/fruits', (req, res) => {
     res.send(fruits);
 });
 
+//post request co create new fruit (to check it in thunder client)
+app.post('/fruits', (req, res) => {
+    const fruit = req.body;
+    console.log(fruit);
+    res.send('new fruit created with POST');
+});
+
+
 app.get('/fruits/:name', (req, res) => {
    // res.send(`return $ {req.params.name} name`);
    const name = req.params.name.toLowerCase(); // get a name of what im looking for 
