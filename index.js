@@ -1,4 +1,4 @@
-
+const fruits = require('./fruits.json');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -8,11 +8,22 @@ app.get('/', (req, res) => {
 });
 
 app.get('/fruits', (req, res) => {
-    res.send(' All Fruits!');
+    res.send(fruits);
 });
 
-app.get('/friuts:name', (req, res) => {
-    res.send(`return $ {req.params.name} name`);
+app.get('/fruits/:name', (req, res) => {
+   // res.send(`return $ {req.params.name} name`);
+   const name = req.params.name.toLowerCase(); // get a name of what im looking for 
+    const fruit = fruits.find(fruit => fruit.name.toLowerCase() == name); // search fruits.json (fruits) for the name match
+    if (fruit == undefined) {
+        // if there is NO fruit
+        res.status(404).send(`The fruit ${name} was not found`);
+
+    }else{
+        // if there is a fruit
+        res.send(fruit);
+    }
+
 });
 
 
