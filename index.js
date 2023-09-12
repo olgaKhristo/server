@@ -3,28 +3,52 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {    
-    res.send('Hello World!');
+app.get('/', (req, res) => {
+    res.send('Hello API!');
 });
 
-app.get('/chicken', (req, res) => {
-    res.send('About Chicken');
+app.get('/fruits', (req, res) => {
+    res.send(' All Fruits!');
 });
 
-
-app.get('/chicken/:name', (req, res) => {
-    res.send(req.params);
+app.get('/friuts:name', (req, res) => {
+    res.send(`return $ {req.params.name} name`);
 });
 
-app.get('/example', (req, res) => {
-  res.sendStatus(418);
-});
-    
-    
 
 app.listen(port, () => {
     console.log(`Server listening at port ${port}`);
 });
+
+
+
+
+// const express = require('express');
+// const app = express();
+// const port = 3000;
+
+// app.get('/', (req, res) => {    
+//     res.send('Hello World!');
+// });
+
+// app.get('/chicken', (req, res) => {
+//     res.send('About Chicken');
+// });
+
+
+// app.get('/chicken/:name', (req, res) => {
+//     res.send(req.params);
+// });
+
+// app.get('/example', (req, res) => {
+//   res.sendStatus(418);
+// });
+    
+    
+
+// app.listen(port, () => {
+//     console.log(`Server listening at port ${port}`);
+// });
 
 
 
