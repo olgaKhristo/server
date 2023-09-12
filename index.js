@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.use(express.json())
+app.use(express.json()) // use it with Post req
 
 // this is midleweare
 app.use((req, res, next) => {
@@ -42,6 +42,28 @@ app.get('/fruits/:name', (req, res) => {
     }
 
 });
+
+//this code from diferent project to post and patch
+// app.post('/sports', (req, res, next) => {
+//     const sport = req.body;
+//     console.log(sport);
+//     res.send('new sport created with POST');
+//     next()
+// });
+
+// app.patch('/sports', (req, res, next) =>{
+//     const sport = req.body
+//     console.log(sport)
+//     res.send('Update sport with PATCH.')   
+//     next() 
+// })
+
+// app.delete('/sports', (req, res, next) =>{
+//     const sport = req.body
+//     console.log(sport)
+//     res.send('Delete with DELETE.')   
+//     next() 
+// })
 
 
 app.listen(port, () => {
