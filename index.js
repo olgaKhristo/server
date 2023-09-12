@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app,get('/chicken', (req, res) => {
+app.get('/chicken', (req, res) => {
     res.send('About Chicken');
 });
 
@@ -15,6 +15,12 @@ app,get('/chicken', (req, res) => {
 app.get('/chicken/:name', (req, res) => {
     res.send(req.params);
 });
+
+app.get('/example', (req, res) => {
+  res.sendStatus(418);
+});
+    
+    
 
 app.listen(port, () => {
     console.log(`Server listening at port ${port}`);
