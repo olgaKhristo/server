@@ -3,6 +3,15 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.use(express.json()); // this is  inbild midleweare
+
+// this is midleweare
+app.use((req, res, next) => {
+    console.log('Time:', Date.now());
+    next();
+});
+
+
 app.get('/', (req, res) => {
     res.send('Hello API!');
 });
