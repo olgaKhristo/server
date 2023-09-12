@@ -20,13 +20,47 @@ app.get('/fruits', (req, res) => {
     res.send(fruits);
 });
 
+const getFruitIndex = name => {
+    //take in a lowercase fruit name and return the index of the fruit or -1 if not found 
+return fruits.findIndex((fruit) => fruit.name.toLowerCase() == name)  
+    
+}
+
 //post request co create new fruit (to check it in thunder client)
 app.post('/fruits', (req, res) => {
-    const fruit = req.body;
-    console.log(fruit);
-    res.send('new fruit created with POST');
+    //check if fruit exists
+    const fi = getFruitIndex(req.body.name.toLowerCase());
+    if (fi > -1) {
+        //if fruit exists, send error
+        res.status(409).send('Fruit already exists');
+    }else{
+//create an arr of all id;
+//get the max id;
+// increment that by 1
+// adjust id to new max id
+
+
+
+
+        //if fruit does not exist, add it to the array
+        fruits.push(req.body);
+        res.status(201).send(req.body);
+    }
+    // const fruit = req.body;
+    // console.log(fruit);
+    // res.send('new fruit created with POST');
 });
 
+app.delete('/fruits/:name', (req, res) => {
+    const fi = getFruitIndex(req.params.name.toLowerCase());
+if(fi == -1){
+    //frtuit canot be found
+    res.status(404).send('Fruit not found');
+}else{
+fruits.splice(fi, 1);
+res.sendStatus(200);
+}
+})
 
 app.get('/fruits/:name', (req, res) => {
    // res.send(`return $ {req.params.name} name`);
